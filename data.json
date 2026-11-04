@@ -3,7 +3,7 @@
   "city": "aydin",
   "base": "aydin",
   "since": "2026-11-04",
-  "updated": 1793811062510,
+  "updated": 1793812076140,
   "note": "Çarşambaya kadar buradayım.",
   "phone": "+905453260048",
   "trips": [
@@ -20,5 +20,62 @@
       "note": ""
     }
   ],
-  "activities": []
+  "activities": [
+    {
+      "id": "amw2dc9kh",
+      "title": "OsCo Kahve",
+      "place": "at OsCo",
+      "city": "aydin",
+      "fav": 1,
+      "note": ""
+    },
+    {
+      "id": "amw2dcpe1",
+      "title": "Bira",
+      "place": "",
+      "city": "both",
+      "fav": 2,
+      "note": ""
+    },
+    {
+      "id": "amw2dczom",
+      "title": "Sinema",
+      "place": "",
+      "city": "both",
+      "fav": 3,
+      "note": ""
+    },
+    {
+      "id": "amw2dd540",
+      "title": "Fifa",
+      "place": "",
+      "city": "both",
+      "fav": 3,
+      "note": ""
+    },
+    {
+      "id": "amw2dd9sp",
+      "title": "Siyasi İşler",
+      "place": "",
+      "city": "both",
+      "fav": 1,
+      "note": "Sıkıcı"
+    },
+    {
+      "id": "amw2ddlsk",
+      "title": "Rakı",
+      "place": "",
+      "city": "aydin",
+      "fav": 3,
+      "note": ""
+    },
+    {
+      "id": "amw2ddwxp",
+      "title": "Çalış Sunset",
+      "place": "at Çalış Plajı",
+      "city": "fethiye",
+      "fav": 2,
+      "note": ""
+    }
+  ]
 }
