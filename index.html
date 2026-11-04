@@ -465,7 +465,7 @@ function setDirty(v){dirty=v;document.getElementById('savebar').hidden=!v;}
 function toast(t){var el=document.getElementById('toast');el.textContent=t;el.hidden=false;clearTimeout(toast._t);toast._t=setTimeout(function(){el.hidden=true;},3200);}
 
 /* ---------- GitHub bağlantısı ---------- */
-var CONFIG = {owner:'', repo:''}; // Kendi alan adına taşırsan doldur: {owner:'kullanici', repo:'toprak-nerede'}
+var CONFIG = {owner:'toprakerengecim48', repo:'toprak-nerede'}; // Kendi alan adına taşırsan doldur: {owner:'kullanici', repo:'toprak-nerede'}
 function repoInfo(){
   var h=location.hostname;
   if(/\.github\.io$/i.test(h)){var o=h.split('.')[0];var seg=location.pathname.split('/').filter(Boolean)[0];
