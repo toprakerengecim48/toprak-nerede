@@ -3,10 +3,23 @@
   "city": "aydin",
   "base": "aydin",
   "since": "2026-11-04",
-  "updated": 1793810868322,
-  "note": "",
+  "updated": 1793810983924,
+  "note": "Çarşambaya kadar buradayım.",
   "phone": "",
-  "trips": [],
+  "trips": [
+    {
+      "city": "aydin",
+      "start": "2026-11-04",
+      "end": "2026-11-11",
+      "note": ""
+    },
+    {
+      "city": "fethiye",
+      "start": "2026-11-11",
+      "end": "2026-11-16",
+      "note": ""
+    }
+  ],
   "activities": [
     {
       "id": "a8",
