@@ -1,0 +1,84 @@
+{
+  "name": "Toprak",
+  "city": "aydin",
+  "base": "aydin",
+  "since": "2026-11-04",
+  "updated": 1793807993145,
+  "note": "",
+  "phone": "",
+  "trips": [],
+  "activities": [
+    {
+      "id": "a8",
+      "title": "Forum Sinema'da film",
+      "place": "Forum Aydın",
+      "city": "aydin",
+      "fav": 3,
+      "note": "Sinema beni çok mutlu eder."
+    },
+    {
+      "id": "a10",
+      "title": "Bira içelim",
+      "place": "",
+      "city": "aydin",
+      "fav": 2,
+      "note": ""
+    },
+    {
+      "id": "a9",
+      "title": "OsCo'da kahve",
+      "place": "OsCo",
+      "city": "aydin",
+      "fav": 1,
+      "note": ""
+    },
+    {
+      "id": "a1",
+      "title": "Sinemaya gidelim",
+      "place": "",
+      "city": "fethiye",
+      "fav": 3,
+      "note": "Sinema beni çok mutlu eder."
+    },
+    {
+      "id": "a2",
+      "title": "Bavyera'da bira",
+      "place": "Bavyera",
+      "city": "fethiye",
+      "fav": 2,
+      "note": ""
+    },
+    {
+      "id": "a5",
+      "title": "Rakı içelim",
+      "place": "",
+      "city": "fethiye",
+      "fav": 2,
+      "note": ""
+    },
+    {
+      "id": "a3",
+      "title": "Çarşıda kahve",
+      "place": "Çarşı",
+      "city": "fethiye",
+      "fav": 1,
+      "note": ""
+    },
+    {
+      "id": "a4",
+      "title": "Çalış'ta gün batımı",
+      "place": "Çalış Plajı",
+      "city": "fethiye",
+      "fav": 1,
+      "note": "Sahilde yürüyüş, sonra bir şeyler içeriz."
+    },
+    {
+      "id": "a7",
+      "title": "Maç ya da oyun gecesi",
+      "place": "",
+      "city": "fethiye",
+      "fav": 1,
+      "note": ""
+    }
+  ]
+}
