@@ -44,6 +44,13 @@ Anahtar sadece o telefonun tarayıcısında saklanır. Artık "Aydın'dayım / F
 
 İpucu: Siteyi telefonda "Ana ekrana ekle" yaparsan uygulama gibi açılır.
 
+## Sitede neler var
+- **Şu an nerede:** Aydın, Fethiye ya da başka bir şehir. Başka şehirdeki günlerde buluşma planı kapalı.
+- **14 günlük takvim** ve planlı gidiş gelişler.
+- **Buluşma planları ve çark:** Çark planları her açılışta güncel listeden çeker, kalp sayısı kadar dilim alır.
+- **Muavine sor:** Sitedeki bilgilere bakıp cevap veren muavin. Yapay zekâ değil, bilinen sorulara hazır cevap veriyor.
+- **Yol hesabı:** Bu yıl ulaşıma ne kadar gittiği, ay ay. Şehir değiştirince panel bilet ücretini sorar.
+
 ## Bilmen gerekenler
 - Arkadaşların her zaman en güncel hali görür. Site durumu doğrudan GitHub'dan okur.
 - Anahtarı kimseyle paylaşma. Bu anahtar sadece bu repoyu değiştirebilir. Telefonunu kaybedersen GitHub'dan anahtarı silip yenisini al.
