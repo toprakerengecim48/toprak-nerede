@@ -349,6 +349,8 @@ function money(v){v=String(v==null?'':v).trim().replace(/\s|₺|tl/gi,'');
   var n=parseFloat(v); return isFinite(n)&&n>0?Math.round(n*100)/100:0;}
 function yearRides(){var y=String(today().getFullYear());return (S.rides||[]).filter(function(r){return String(r.date).slice(0,4)===y&&money(r.price)>0;});}
 function compact(v){return v<1000?String(Math.round(v)):(v/1000).toFixed(v<10000?1:0).replace('.',',')+'b';}
+function rideLabel(r){return r.bulk?MONTHS[parse(r.date).getMonth()]+' toplamı':(r.from||'?')+' → '+(r.to||'?');}
+function rideWhen(r){return r.bulk?MONTHS[parse(r.date).getMonth()].slice(0,3):shortDay(r.date);}
 function shortDay(s){var d=parse(s);return d.getDate()+' '+MONTHS[d.getMonth()].slice(0,3);}
 function normPhone(p){var d=String(p||'').replace(/\D/g,'');
   if(!d) return ''; if(d.indexOf('00')===0) d=d.slice(2);
@@ -639,7 +641,9 @@ function actLine(re,pre){var L=S.activities.filter(function(a){return re.test(a.
   return pre+L.map(function(a){return (a.city==='both'?'İki şehirde de':CITY[a.city].loc)+': '+a.title+' '+'♥'.repeat(a.fav);}).join('\n');}
 function spendLine(){var R=yearRides(), tot=0; R.forEach(function(r){tot+=money(r.price);});
   if(!R.length) return 'Bu yıl için henüz bilet girmedim. Girince hesabı ben tutarım!';
-  return 'Bu yıl yola '+tl(tot)+' verdim, '+R.length+' sefer. Aşağıda “Yol hesabı”nda ay ay dökümü var.';}
+  var bm={}, top=null; R.forEach(function(r){var m=+String(r.date).slice(5,7)-1; bm[m]=(bm[m]||0)+money(r.price); if(top===null||bm[m]>bm[top]) top=m;});
+  var single=R.every(function(r){return !r.bulk;});
+  return 'Bu yıl yola '+tl(tot)+' verdim'+(single?', '+R.length+' sefer':'')+'. En çok '+MONTHS[top]+' ayında harcadım: '+tl(bm[top])+'. Aşağıda “Yol hesabı”nda ay ay dökümü var.';}
 function renderAskLog(){
   var el=document.getElementById('ask-log'); if(!el) return;
   if(!askLog.length) askLog.push({who:'bot',text:'Merhaba! Ben muavin '+S.name+'. Şu an '+here().iam+'. Ne merak ediyorsan sor.'});
@@ -654,7 +658,7 @@ function ask(q){q=String(q||'').trim(); if(!q) return;
 function renderSpend(){
   var el=document.getElementById('spend'); if(!el) return;
   var R=yearRides(), y=today().getFullYear(), tot=0, months=[0,0,0,0,0,0,0,0,0,0,0,0], maxP=0;
-  R.forEach(function(r){var v=money(r.price); tot+=v; months[+String(r.date).slice(5,7)-1]+=v; if(v>maxP)maxP=v;});
+  R.forEach(function(r){var v=money(r.price); tot+=v; months[+String(r.date).slice(5,7)-1]+=v; if(!r.bulk&&v>maxP)maxP=v;});
   if(!R.length){el.innerHTML='<div class="empty-box">'+y+' için henüz bilet girilmedi.'+(canEdit?' Şehir değiştirdiğinde panel bileti soracak, ya da “Yolculuklar” kısmından ekle.':'')+'</div>';return;}
   var mx=Math.max.apply(null,months), cm=today().getMonth(), bars='';
   var ML=['Oca','Şub','Mar','Nis','May','Haz','Tem','Ağu','Eyl','Eki','Kas','Ara'];
@@ -663,7 +667,10 @@ function renderSpend(){
       : '<rect x="'+(x-6)+'" y="110" width="12" height="2" rx="1" style="fill:var(--muted);opacity:.5"></rect>';
     bars+='<text x="'+x+'" y="130" text-anchor="middle" style="fill:var('+(i===cm?'--ink':'--muted')+');font:'+(i===cm?800:600)+' 10px var(--body)">'+ML[i]+'</text>';});
   var pr=S.prices||{}, pc=money(pr.cinema), pb=money(pr.beer), chips=[];
-  chips.push(R.length+' sefer'); chips.push('ortalama '+tl(tot/R.length)); chips.push('en pahalı '+tl(maxP));
+  var single=R.filter(function(r){return !r.bulk;}), hasBulk=single.length<R.length, active=months.filter(function(v){return v>0;}).length;
+  if(!hasBulk){chips.push(R.length+' sefer'); chips.push('bilet ortalaması '+tl(tot/R.length));}
+  chips.push('ayda ortalama '+tl(tot/active));
+  if(maxP) chips.push('en pahalı bilet '+tl(maxP));
   if(pc) chips.push('≈ '+Math.floor(tot/pc)+' sinema bileti');
   if(pb) chips.push('≈ '+Math.floor(tot/pb)+' bira');
   var last=R.slice().sort(function(a,b){return String(b.date).localeCompare(a.date);}).slice(0,5);
@@ -671,7 +678,7 @@ function renderSpend(){
     '<p class="spend-sub">'+esc(S.name)+' bu yıl ulaşıma bu kadar harcadı.</p>'+
     '<div class="chips">'+chips.map(function(c){return '<span class="chip2">'+c+'</span>';}).join('')+'</div>'+
     '<svg class="bars" viewBox="0 0 360 136" role="img" aria-label="Aylara göre ulaşım harcaması"><line x1="2" y1="112" x2="358" y2="112" style="stroke:var(--ink);stroke-width:2"></line>'+bars+'</svg>'+
-    '<ul class="rides">'+last.map(function(r){return '<li><span>'+shortDay(r.date)+'</span><span>'+esc(r.from||'?')+' → '+esc(r.to||'?')+'</span><b>'+tl(money(r.price))+'</b></li>';}).join('')+'</ul></div>';
+    '<ul class="rides">'+last.map(function(r){return '<li><span>'+rideWhen(r)+'</span><span>'+esc(rideLabel(r))+'</span><b>'+tl(money(r.price))+'</b></li>';}).join('')+'</ul></div>';
 }
 function rideAskHtml(){
   if(!rideAsk||S.city!==rideAsk.code||(rideAsk.code==='other'&&S.place!==rideAsk.to)) return '';
@@ -724,7 +731,7 @@ function renderOwner(){
      '<div class="field"><label for="new-ride-price">Ücret (₺)</label><input id="new-ride-price" inputmode="decimal" placeholder="450"></div>'+
      '<button type="button" class="btn" id="add-ride">Ekle</button></div><datalist id="city-list"><option value="Aydın"></option><option value="Fethiye"></option></datalist>'+
      '<ul class="ride-list">'+(D.rides||[]).map(function(r,i){return {r:r,i:i};}).sort(function(a,b){return String(b.r.date).localeCompare(a.r.date);}).map(function(o){
-        return '<li><span>'+shortDay(o.r.date)+' · '+esc(o.r.from)+' → '+esc(o.r.to)+' · '+tl(money(o.r.price))+'</span><button type="button" class="x" data-del-ride="'+o.i+'" aria-label="Yolculuğu sil">Sil</button></li>';}).join('')+'</ul></div></details>'+
+        return '<li><span>'+rideWhen(o.r)+' · '+esc(rideLabel(o.r))+' · '+tl(money(o.r.price))+'</span><button type="button" class="x" data-del-ride="'+o.i+'" aria-label="Yolculuğu sil">Sil</button></li>';}).join('')+'</ul></div></details>'+
    '<details><summary>Ayarlar</summary><div class="ed"><div class="grid2">'+
      '<div class="field"><label for="own-name">Adın</label><input id="own-name" data-g="name" value="'+esc(D.name)+'"></div>'+
      '<div class="field"><label for="own-phone">WhatsApp numaran</label><input id="own-phone" data-g="phone" inputmode="tel" value="'+esc(D.phone)+'" placeholder="05xx xxx xx xx"></div>'+
