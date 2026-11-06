@@ -3,7 +3,7 @@
   "city": "aydin",
   "base": "aydin",
   "since": "2026-11-04",
-  "updated": 1793812076140,
+  "updated": 1793984419661,
   "note": "Çarşambaya kadar buradayım.",
   "phone": "+905453260048",
   "trips": [
@@ -94,5 +94,8 @@
       "bulk": true,
       "price": 1200
     }
-  ]
+  ],
+  "prices": {
+    "beer": "200"
+  }
 }
