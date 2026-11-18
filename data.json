@@ -2,9 +2,9 @@
   "name": "Toprak",
   "city": "aydin",
   "base": "aydin",
-  "since": "2026-11-04",
-  "updated": 1793984419661,
-  "note": "Çarşambaya kadar buradayım.",
+  "since": "2026-11-16",
+  "updated": 1795027453264,
+  "note": "",
   "phone": "+905453260048",
   "trips": [
     {
@@ -97,5 +97,7 @@
   ],
   "prices": {
     "beer": "200"
-  }
+  },
+  "place": "",
+  "until": ""
 }
