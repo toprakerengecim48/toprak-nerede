@@ -3,20 +3,22 @@
   "city": "aydin",
   "base": "aydin",
   "since": "2026-11-16",
-  "updated": 1795027453264,
-  "note": "",
+  "updated": 1795027589241,
+  "note": "25 Kasım'a kadar Aydın'dayım, sonra 4 gün Fethiye!",
   "phone": "+905453260048",
   "trips": [
     {
       "city": "aydin",
-      "start": "2026-11-04",
-      "end": "2026-11-11",
+      "place": "",
+      "start": "2026-11-18",
+      "end": "2026-11-25",
       "note": ""
     },
     {
       "city": "fethiye",
-      "start": "2026-11-11",
-      "end": "2026-11-16",
+      "place": "",
+      "start": "2026-11-26",
+      "end": "2026-11-29",
       "note": ""
     }
   ],
@@ -92,6 +94,12 @@
     {
       "date": "2026-11-01",
       "bulk": true,
+      "price": 1200
+    },
+    {
+      "date": "2026-11-16",
+      "from": "Aydın",
+      "to": "Fethiye (gidiş-dönüş)",
       "price": 1200
     }
   ],
