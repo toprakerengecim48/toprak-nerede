@@ -1,19 +1,12 @@
 {
   "name": "Toprak",
-  "city": "aydin",
+  "city": "fethiye",
   "base": "aydin",
-  "since": "2026-11-16",
-  "updated": 1795027589241,
-  "note": "25 Kasım'a kadar Aydın'dayım, sonra 4 gün Fethiye!",
+  "since": "2026-11-26",
+  "updated": 1795689168993,
+  "note": "29 Kasım'a kadar Fethiye'deyim!",
   "phone": "+905453260048",
   "trips": [
-    {
-      "city": "aydin",
-      "place": "",
-      "start": "2026-11-18",
-      "end": "2026-11-25",
-      "note": ""
-    },
     {
       "city": "fethiye",
       "place": "",
@@ -101,6 +94,12 @@
       "from": "Aydın",
       "to": "Fethiye (gidiş-dönüş)",
       "price": 1200
+    },
+    {
+      "date": "2026-11-26",
+      "from": "Aydın",
+      "to": "Fethiye",
+      "price": 600
     }
   ],
   "prices": {
